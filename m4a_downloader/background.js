@@ -5,7 +5,7 @@
 'use strict';
 
 var global_m4a_link = "";
-
+// https://res.wx.qq.com/voice/getvoice?mediaid=MzU3MTcxNjI4OV8yMjQ3NDg4MDI1
 function is_m4a_link(url) {
   if (url.indexOf('.m4a') > 5 || url.indexOf('.mp3') > 5) {
     return true;
@@ -30,6 +30,9 @@ function download_file(url, title) {
 chrome.webRequest.onBeforeRequest.addListener(
   function(info) {
     if (is_m4a_link(info.url)) {
+      global_m4a_link = info.url;
+    }
+    else if (info.type == "media") {
       global_m4a_link = info.url;
     }
     // return {requestHeaders: details.requestHeaders};
