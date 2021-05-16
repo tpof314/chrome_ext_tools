@@ -46,8 +46,4 @@ chrome.webRequest.onBeforeRequest.addListener(
 chrome.browserAction.onClicked.addListener((tab) => {
   print_info(tab);
   download_file(global_m4a_link, tab.title);
-  // chrome.downloads.download({
-  //   url: global_m4a_link, 
-  //   filename: "1.m4a"
-  // })
 });
