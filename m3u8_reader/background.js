@@ -22,11 +22,11 @@ function print_info(tab) {
 
 function pass_to_server(url, title) {
   var payload = {
-      "url": url,
+      "video_url": url,
       "title": title
   };
-  
-  fetch('http://localhost:5000/save_m3u8_link', {
+
+  fetch('https://ofhnindco6.execute-api.ap-southeast-2.amazonaws.com/video_pub', {
       method: 'POST',
       headers: {
           'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
