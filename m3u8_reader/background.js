@@ -22,17 +22,16 @@ function print_info(tab) {
 
 function pass_to_server(url, title) {
   var payload = {
-      "video_url": url,
-      "title": title
+      "video_url": url
   };
 
   fetch('https://ofhnindco6.execute-api.ap-southeast-2.amazonaws.com/video_pub', {
       method: 'POST',
       headers: {
-          'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
-          'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
       },
-      body: new URLSearchParams(payload)
+      body: JSON.stringify(payload)
   }).then(resp => console.log(resp));
 }
 
