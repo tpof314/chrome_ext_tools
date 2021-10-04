@@ -6,8 +6,11 @@
 
 var global_m3u8_link = "";
 
-function is_m3u8_link(url) {
-  if (url.indexOf('.m3u8') > 5) {
+function is_m3u8_link(info) {
+  if (info.url.indexOf('.m3u8') > 5) {
+    return true;
+  }
+  else if (info.url.indexOf('.mp4') > 5 && info.type == 'media') {
     return true;
   }
   else {
@@ -37,7 +40,7 @@ function pass_to_server(url, title) {
 
 chrome.webRequest.onBeforeRequest.addListener(
   function(info) {
-    if (is_m3u8_link(info.url)) {
+    if (is_m3u8_link(info)) {
       global_m3u8_link = info.url;
     }
     // return {requestHeaders: details.requestHeaders};
